@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>CADASTRAR ESTOQUE</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../js/cadEstoque.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html">Principal</a>
+        <a href="./cadUsuario.html">Usuario</a>
+        <a href="./cadProduto.html">Produto</a>
+        <a href="./cadEstoque.html">Estoque</a>
+        <div class="conta">
+          <a href="#">Nome Usuario: <span id="nomeUsuario"> </span></a>
+          <a href="../index.html"><button id="logout">Sair</button></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>CADASTRAR ESTOQUE</h1>
+      <form>
+        <label for="idProduto">Digite o código do Produto:</label><br />
+        <input
+          type="text"
+          id="idProduto"
+          placeholder="cód Produto"
+        /><br /><br />
+
+        <label for="idUsuario">Digite o código do Usuario:</label><br />
+        <input
+          type="text"
+          id="idUsuario"
+          placeholder="cód Usuario"
+        /><br /><br />
+
+        <label for="data">Digite a data:</label><br />
+        <input type="text" id="data" placeholder="data" /><br /><br />
+
+        <label for="tipo">Digite a tipo:</label><br />
+
+        <select id="tipo">
+          <option value="ENTRADA">ENTRADA</option>
+          <option value="SAIDA">SAíDA</option>
+        </select>
+        <br /><br />
+
+        <label for="qtdeMovimento">Digite a Quantidade de Movimento:</label
+        ><br />
+        <input
+          type="text"
+          id="qtdeMovimento"
+          placeholder="qtdeMovimento"
+        /><br /><br />
+
+        <button type="submit" id="cadastrar">Cadastrar</button><br /><br />
+      </form>
+
+      <p><a id="cliqueAqui" href="./listarEstoque.html">Listar</a>o Estoque?</p>
+
+      <br />
+      <div id="res"></div>
+      <br /><br />
+    </main>
+  </body>
+</html>

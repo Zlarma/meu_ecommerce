@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>CADASTRAR USUARIO</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../js/cadUsuario.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html">Principal</a>
+        <a href="./cadUsuario.html">Usuario</a>
+        <a href="./cadProduto.html">Produto</a>
+        <a href="./cadEstoque.html">Estoque</a>
+        <div class="conta">
+          <a href="#">Nome Usuario: <span id="nomeUsuario"> </span></a>
+          <a href="../index.html"><button id="logout">Sair</button></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>CADASTRAR USUARIO</h1>
+      <form>
+        <label for="nome">Digite seu Nome:</label><br />
+        <input type="text" id="nome" placeholder="nome" /><br /><br />
+
+        <label for="cpf">Digite seu CPF:</label><br />
+        <input type="text" id="cpf" placeholder="cpf" /><br /><br />
+
+        <label for="telefone">Digite seu Telefone:</label><br />
+        <input type="text" id="telefone" placeholder="telefone" /><br /><br />
+
+        <label for="senha">Digite sua Senha:</label><br />
+        <input type="text" id="senha" placeholder="senha" /><br /><br />
+
+        <button type="submit" id="cadastrar">Cadastrar</button><br /><br />
+      </form>
+
+      <p>
+        <a id="cliqueAqui" href="./listarUsuario.html">Listar</a>os Usuarios?
+      </p>
+
+      <br />
+      <div id="res"></div>
+      <br /><br />
+    </main>
+  </body>
+</html>

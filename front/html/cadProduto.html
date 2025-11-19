@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>CADASTRAR PRODUTO</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../js/cadProduto.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html">Principal</a>
+        <a href="./cadUsuario.html">Usuario</a>
+        <a href="./cadProduto.html">Produto</a>
+        <a href="./cadEstoque.html">Estoque</a>
+        <div class="conta">
+          <a href="#">Nome Usuario: <span id="nomeUsuario"> </span></a>
+          <a href="../index.html"><button id="logout">Sair</button></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>CADASTRAR PRODUTO</h1>
+      <form>
+        <label for="nome">Digite o Nome do produto:</label><br />
+        <input type="text" id="nome" placeholder="nome" /><br /><br />
+
+        <label for="marca">Digite a marca do produto:</label><br />
+        <input type="text" id="marca" placeholder="marca" /><br /><br />
+
+        <label for="quantidade">Digite a quantidade do produto:</label><br />
+        <input
+          type="text"
+          id="quantidade"
+          placeholder="quantidade"
+        /><br /><br />
+
+        <label for="preco">Digite o Preço do produto:</label><br />
+        <input type="text" id="preco" placeholder="preco" /><br /><br />
+
+        <button type="submit" id="cadastrar">Cadastrar</button><br /><br />
+      </form>
+
+      <p>
+        <a id="cliqueAqui" href="./listarProduto.html">Listar</a>os Produtos?
+      </p>
+
+      <br />
+      <div id="res"></div>
+      <br /><br />
+    </main>
+  </body>
+</html>

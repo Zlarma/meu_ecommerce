@@ -1,0 +1,129 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(233, 227, 227);
+  color: rgb(20, 20, 20);
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: rgb(115, 163, 92);
+  padding: 20px;
+  box-shadow: 0px -2px 15px 10px rgba(0, 0, 0, 0.719),
+    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
+    rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
+    rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px,
+    rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+
+h1 {
+  margin: 40px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+select {
+  cursor: cell;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+input,
+button,
+select {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  text-align: left;
+  font-weight: bold;
+}
+
+input::placeholder {
+  color: green;
+}
+
+a {
+  color: white;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+#cliqueAqui {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: rgb(70, 124, 83);
+  transition: 1.3s;
+}
+#cliqueAqui:hover {
+  filter: brightness(200%) contrast(200%);
+  text-shadow: 0px 0px 10px white;
+  transition: 0.3s;
+  font-size: 160%;
+  font-weight: 900;
+}
+
+#resListar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+table,
+th,
+td {
+  padding: 0px 4px;
+  border: solid 1px white;
+  border-collapse: collapse;
+}
+th {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.conta {
+  font-weight: 900;
+  float: right;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.705);
+}
+::selection {
+  background-color: rgba(47, 99, 59, 0.781);
+  color: rgb(255, 255, 255);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset -1px 0px 4px -1px rgba(0, 0, 0, 0.473);
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(47, 99, 59, 0.781);
+  box-shadow: inset 3px 3px 4px -1px rgba(114, 206, 206, 0.219);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(47, 99, 59, 0.781);
+
+  box-shadow: inset 0px 0px 2px 2px rgba(17, 34, 24, 0.726);
+}
