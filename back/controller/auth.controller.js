@@ -1,4 +1,4 @@
-const Usuario = require('../model/Usuario')
+const Usuario = require('../models/Usuario')
 const { compareSenha } = require('../service/bcrypt.service')
 const { gerarToken } = require('../service/jwt.service')
 

@@ -8,11 +8,11 @@ const login = document.getElementById("login");
 login.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let cpf = document.getElementById("cpf").value;
+  let email = document.getElementById("email").value;
   let senha = document.getElementById("senha").value;
 
   const valores = {
-    cpf: cpf,
+    email: email,
     senha: senha,
   };
 

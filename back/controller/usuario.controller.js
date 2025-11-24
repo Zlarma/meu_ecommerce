@@ -29,4 +29,14 @@ const cadastrar = async (req, res) => {
   }
 };
 
-module.exports = { cadastrar };
+const listar = async (req, res) => {
+  try {
+    let dados = await Usuario.findAll();
+    res.status(200).json(dados);
+  } catch (err) {
+    console.log("Erro ao listar produtos!", err);
+    res.status(500).json({ message: "Erro ao listar produtos!" });
+  }
+};
+
+module.exports = { cadastrar, listar };
