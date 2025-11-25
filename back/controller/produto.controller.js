@@ -1,99 +1,73 @@
-const Produto = require('../models/Produto')
+const Produto = require("../models/Produto");
+const Estoque = require("../models/Estoque");
 
-const cadastrar = async (req,res)=>{
-    const valores = req.body
-    console.log(valores)
+const cadastrar = async (req, res) => {
+  try {
+    const { nome, descricao, modelo, preco, imagem_url, ativo } = req.body;
+    if (!nome || preco == null) return res.status(400).json({ message: "Nome e preço são obrigatórios." });
 
-    if(!valores.nome || !valores.marca || !valores.preco){
-        return res.status(400).json({message: 'Campos Obrigatórios'})
-    }
+    const produto = await Produto.create({ nome, descricao, modelo, preco, imagem_url, ativo });
 
-    try{
-        let dados = await Produto.create(valores)
-        res.status(201).json({message: 'Produto cadastrado com sucesso!', dados})
-    }catch(err){
-        console.log('Erro ao cadastrar produto!',err)
-        res.status(500).json({message: 'Erro ao cadastrar produto!'})
-    }
-}
-const listar = async (req,res)=>{
+    // cria estoque inicial (quantidade 0)
+    await Estoque.create({
+      idProduto: produto.codProduto,
+      quantidade_atual: 0,
+      quantidade_minima: 0
+    });
 
-    try{
-        let dados = await Produto.findAll()
-        res.status(200).json(dados)
-    }catch(err){
-        console.log('Erro ao listar produtos!',err)
-        res.status(500).json({message: 'Erro ao listar produtos!'})
-    }
-}
-const atualizar = async (req,res)=>{
-    const id = req.params.id
-    const valores = req.body
-    console.log('id: ',id)
-    console.log(valores)
+    res.status(201).json(produto);
+  } catch (err) {
+    console.error("Erro cadastrar produto:", err);
+    res.status(500).json({ message: "Erro ao cadastrar produto." });
+  }
+};
 
-    if(!valores.nome || !valores.marca || !valores.preco){
-        return res.status(400).json({message: 'Campos Obrigatórios'})
-    }
+const listar = async (req, res) => {
+  try {
+    const produtos = await Produto.findAll({
+      include: [{ model: Estoque, as: "estoqueProduto" }]
+    });
+    res.status(200).json(produtos);
+  } catch (err) {
+    console.error("Erro listar produtos:", err);
+    res.status(500).json({ message: "Erro ao listar produtos." });
+  }
+};
 
-    try{
-        let dados = await Produto.findByPk(id)
+const buscarPorId = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const produto = await Produto.findByPk(id, {
+      include: [{ model: Estoque, as: "estoqueProduto" }]
+    });
+    if (!produto) return res.status(404).json({ message: "Produto não encontrado." });
+    res.status(200).json(produto);
+  } catch (err) {
+    console.error("Erro buscar produto:", err);
+    res.status(500).json({ message: "Erro ao buscar produto." });
+  }
+};
 
-        if(!dados){
-            return res.status(404).json({message: 'Produto não encontrado'})
-        }else{
-            await Produto.update(valores, {where: { codProduto: id }})
-            dados = await Produto.findByPk(id)
-            res.status(200).json({message: 'Produto atualizado com sucesso!'})
-        }
+const atualizar = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Produto.update(req.body, { where: { codProduto: id } });
+    res.status(200).json({ message: "Produto atualizado." });
+  } catch (err) {
+    console.error("Erro atualizar produto:", err);
+    res.status(500).json({ message: "Erro ao atualizar produto." });
+  }
+};
 
-        
-    }catch(err){
-        console.log('Erro ao atualizar produto!',err)
-        res.status(500).json({message: 'Erro ao atualizar produto!'})
-    }
-}
-const apagar = async (req,res)=>{
-    const id = req.params.id
-    console.log('id: ',id)
+const excluir = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Produto.destroy({ where: { codProduto: id } });
+    res.status(200).json({ message: "Produto excluído." });
+  } catch (err) {
+    console.error("Erro excluir produto:", err);
+    res.status(500).json({ message: "Erro ao excluir produto." });
+  }
+};
 
-    try{
-        let dados = await Produto.findByPk(id)
-
-        if(!dados){
-            return res.status(404).json({message: 'Produto não encontrado'})
-        }else{
-            await Produto.destroy({where: { codProduto: id }})
-            res.status(204).json({message: 'Produto excluído com sucesso!'})
-        }
-        
-    }catch(err){
-        console.log('Erro ao excluir produto!',err)
-        res.status(500).json({message: 'Erro ao excluir produto!'})
-    }
-}
-const consultar = async (req,res)=>{
-    const valores = req.body
-    console.log(valores)
-
-    if(!valores.nome){
-        return res.status(400).json({message: 'Campos Obrigatórios'})
-    }
-
-    try{
-        let dados = await Produto.findOne({where: { nome: valores.nome}})
-        if(!dados){
-            return res.status(404).json({message: 'Produto não encontrado!'})
-        }else{
-            res.status(200).json(dados)
-        }
-    }catch(err){
-        console.log('Erro ao consultar produto!',err)
-        res.status(500).json({message: 'Erro ao consultar produto!'})
-    }
-}
-
-
-
-
-module.exports = { cadastrar, listar, atualizar, apagar, consultar }
+module.exports = { cadastrar, listar, buscarPorId, atualizar, excluir };
