@@ -1,3 +1,4 @@
+// Sim, eu peguei os controllers com o Chat-GPT, e talvez eu consiga explicar o que ele fez... Eu não tive muito tempo pra fazer isso na mão, sozinho, me desculpa
 const Entrega = require("../models/Entrega");
 const Pedido = require("../models/Pedido");
 
