@@ -6,6 +6,7 @@ npm-debug.log*
 /logs
 
 # Variáveis de Ambiente
+# Acho que não é bom.. não.. ignorar esse .env? Mas, eu não sei.
 .env
 
 # Cache do npm

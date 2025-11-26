@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const SEGREDO = 'minha_chave_super_secreta_do_sistema'
+const SEGREDO = 'secret'
 
 function gerarToken(payload){
     return jwt.sign(payload, SEGREDO, { expiresIn: '3h'})

@@ -128,3 +128,58 @@ th {
 
   box-shadow: inset 0px 0px 2px 2px rgba(17, 34, 24, 0.726);
 }
+
+/* Aqui é os selects */
+
+select {
+  color: black;
+  margin: 14px;
+  border: 2px solid #000000;
+  background: #eeeeee;
+  padding-right: 50px;
+  text-align: center;
+  transition: 0.4s;
+}
+
+select:hover,
+select:focus {
+  background: #dddddd;
+}
+select::picker-icon {
+  color: rgb(0, 0, 0);
+  transition: 0.4s rotate;
+}
+select:open::picker-icon {
+  rotate: 180deg;
+}
+::picker(select) {
+  border: none;
+}
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+
+  border: 2px solid #000000;
+  background: #eeeeee;
+  padding: 10px;
+  transition: 0.4s;
+}
+option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+::picker(select) {
+  border-radius: 8px;
+}
+
+option:not(option:last-of-type) {
+  border-bottom: none;
+}
+option:nth-of-type(odd) {
+  background: rgb(197, 197, 197);
+}

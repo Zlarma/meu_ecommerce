@@ -17,7 +17,7 @@ const Produto = db.define('produto',{
     },
     modelo: {
         type: DataTypes.STRING(50),
-        allowNull: false,
+        allowNull: true,
     },
     preco: {
         type: DataTypes.DECIMAL(10,2), // Preço de venda
