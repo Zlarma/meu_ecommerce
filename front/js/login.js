@@ -4,8 +4,8 @@ const logout = document.getElementById("logout");
 const loginBtn = document.getElementById("login");
 
 // se já tem usuário logado, mostra o nome (ao carregar a página)
-document.addEventListener('DOMContentLoaded', () => {
-  const nome = localStorage.getItem('nome');
+document.addEventListener("DOMContentLoaded", () => {
+  const nome = localStorage.getItem("nome");
   if (nome) {
     nomeUsuario.textContent = nome;
   }
@@ -43,7 +43,6 @@ loginBtn.addEventListener("click", async (e) => {
     // atualiza a UI
     nomeUsuario.textContent = dados.user.nome;
     res.innerText = dados.message || "Logado com sucesso!";
-
   } catch (err) {
     console.error("Erro ao fazer o login!", err);
     res.innerText = "Erro de rede ao conectar ao servidor.";
@@ -53,4 +52,5 @@ loginBtn.addEventListener("click", async (e) => {
 logout.addEventListener("click", () => {
   localStorage.clear();
   nomeUsuario.textContent = "";
+  alert("Você deslogou.");
 });
